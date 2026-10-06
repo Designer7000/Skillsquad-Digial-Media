@@ -23,11 +23,11 @@
   --line-invert:   rgba(10, 10, 11, 0.14);
 
   /* ---------- Color: accent (ONE controlled accent) ---------- */
-  --accent:        #ff4e1b;   /* ember orange — Skillsquad signature */
-  --accent-deep:   #c93308;
-  --accent-soft:   rgba(255, 78, 27, 0.10);  /* subtle accent wash */
-  --accent-glow:   rgba(255, 78, 27, 0.32);  /* restrained glow */
-  --accent-text:   #ff6a3d;   /* accent text on dark (contrast-safe) */
+  --accent:        #fdb813;   /* logo gold — Skillsquad signature */
+  --accent-deep:   #c77806;
+  --accent-soft:   rgba(253, 184, 19, 0.10);  /* subtle accent wash */
+  --accent-glow:   rgba(253, 184, 19, 0.32);  /* restrained glow */
+  --accent-text:   #ffcf4d;   /* accent text on dark (contrast-safe) */
 
   /* ---------- Interactive states ---------- */
   --hover-wash:    rgba(244, 243, 239, 0.04);
