@@ -1,0 +1,102 @@
+/* ============================================================
+   SKILLSQUAD DIGITAL MEDIA — DESIGN TOKENS
+   Phase 1: Creative Foundation
+   Single source of truth for color, type, spacing, motion.
+   ============================================================ */
+
+:root {
+  /* ---------- Color: surfaces ---------- */
+  --bg:            #0a0a0b;   /* primary background (near-black) */
+  --bg-elev:       #101012;   /* elevated surfaces */
+  --bg-elev-2:     #161619;   /* cards / wells */
+  --bg-invert:     #f4f3ef;   /* inverted sections */
+
+  /* ---------- Color: text ---------- */
+  --text:          #f4f3ef;   /* primary text (warm white) */
+  --text-2:        #a9a9b0;   /* secondary text (neutral grey) */
+  --text-3:        #6e6e76;   /* muted text */
+  --text-invert:   #0a0a0b;   /* text on light surfaces */
+
+  /* ---------- Color: lines & borders ---------- */
+  --line:          rgba(244, 243, 239, 0.09);
+  --line-strong:   rgba(244, 243, 239, 0.18);
+  --line-invert:   rgba(10, 10, 11, 0.14);
+
+  /* ---------- Color: accent (ONE controlled accent) ---------- */
+  --accent:        #ff4e1b;   /* ember orange — Skillsquad signature */
+  --accent-deep:   #c93308;
+  --accent-soft:   rgba(255, 78, 27, 0.10);  /* subtle accent wash */
+  --accent-glow:   rgba(255, 78, 27, 0.32);  /* restrained glow */
+  --accent-text:   #ff6a3d;   /* accent text on dark (contrast-safe) */
+
+  /* ---------- Interactive states ---------- */
+  --hover-wash:    rgba(244, 243, 239, 0.04);
+  --focus-ring:    0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+
+  /* ---------- Typography ---------- */
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, -apple-system, sans-serif;
+
+  --fs-hero:      clamp(3.25rem, 9.5vw, 9rem);
+  --fs-display:   clamp(2.5rem, 6vw, 5.25rem);
+  --fs-h2:        clamp(1.9rem, 3.8vw, 3.25rem);
+  --fs-h3:        clamp(1.25rem, 2vw, 1.625rem);
+  --fs-lead:      clamp(1.0625rem, 1.4vw, 1.25rem);
+  --fs-body:      1rem;
+  --fs-small:     0.875rem;
+  --fs-label:     0.72rem;
+
+  --lh-tight:     0.98;
+  --lh-display:   1.04;
+  --lh-heading:   1.12;
+  --lh-body:      1.65;
+
+  --tracking-tight: -0.03em;
+  --tracking-display: -0.035em;
+  --tracking-label: 0.14em;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+
+  /* ---------- Spacing scale (4px base) ---------- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.5rem;
+  --sp-6:  2rem;
+  --sp-8:  3rem;
+  --sp-10: 4.5rem;
+  --sp-12: 6rem;
+  --sp-16: 9rem;
+
+  --section-pad: clamp(5rem, 9vw, 8.5rem);
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --maxw: 1480px;
+  --maxw-text: 68ch;
+
+  /* ---------- Shape ---------- */
+  --r-none: 0;
+  --r-sm: 3px;   /* used sparingly; editorial = mostly sharp */
+  --r-md: 6px;
+  --r-pill: 999px;
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-swift: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-micro: 240ms;   /* micro interactions: 200-400ms */
+  --t-med: 480ms;
+  --t-macro: 800ms;   /* larger transitions: 600-1000ms */
+
+  /* ---------- Elevation ---------- */
+  --shadow-lift: 0 24px 64px -24px rgba(0, 0, 0, 0.7);
+  --nav-h: 76px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 64px;
+    --section-pad: clamp(3.5rem, 12vw, 5rem);
+  }
+}
