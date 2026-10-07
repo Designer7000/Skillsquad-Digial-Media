@@ -31,7 +31,7 @@
   box-shadow: 0 0 12px var(--accent-glow); flex: none;
 }
 .brand img {
-  height: 3rem; width: auto; display: block; flex: none;
+  height: 3.5rem; width: auto; display: block; flex: none;
 }
 .nav-links { display: flex; align-items: center; gap: clamp(1.25rem, 2.5vw, 2.5rem); }
 .nav-links a {
