@@ -18,7 +18,7 @@ window.SKILLSQUAD = {
     // PLACEHOLDER — replace with real contact details
     email: "skillsquaddigitalmedia@gmail.com",
     phone: "+923080328673",
-    phone2: "03238099936",
+    phone2: "+9238099936",
     hours: "Mon – Fri, 9:00 – 18:00",
   },
 
