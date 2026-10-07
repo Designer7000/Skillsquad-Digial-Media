@@ -451,7 +451,7 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 }
 .footer-grid h4 {
   font-size: var(--fs-label); letter-spacing: var(--tracking-label);
-  text-transform: uppercase; color: var(--text-3); margin-bottom: var(--sp-4);
+  text-transform: uppercase; color: #fdb712; margin-bottom: var(--sp-4);
   font-family: var(--font-display); font-weight: var(--weight-medium);
 }
 .footer-grid ul { display: grid; gap: var(--sp-3); }
