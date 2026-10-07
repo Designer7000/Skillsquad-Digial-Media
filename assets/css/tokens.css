@@ -4,6 +4,44 @@
    Single source of truth for color, type, spacing, motion.
    ============================================================ */
 
+/* ---------- Bomstad Display (self-hosted) ---------- */
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 100; font-display: swap;
+  src: url("../fonts/bomstad-display-100.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 200; font-display: swap;
+  src: url("../fonts/bomstad-display-200.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url("../fonts/bomstad-display-300.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/bomstad-display-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("../fonts/bomstad-display-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("../fonts/bomstad-display-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/bomstad-display-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 800; font-display: swap;
+  src: url("../fonts/bomstad-display-800.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bomstad Display"; font-style: normal; font-weight: 900; font-display: swap;
+  src: url("../fonts/bomstad-display-900.woff2") format("woff2");
+}
+
 :root {
   /* ---------- Color: surfaces ---------- */
   --bg:            #0a0a0b;   /* primary background (near-black) */
@@ -34,7 +72,7 @@
   --focus-ring:    0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
 
   /* ---------- Typography ---------- */
-  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-display: "Bomstad Display", "Space Grotesk", "Inter", system-ui, sans-serif;
   --font-body:    "Inter", system-ui, -apple-system, sans-serif;
 
   --fs-hero:      clamp(3.25rem, 9.5vw, 9rem);
