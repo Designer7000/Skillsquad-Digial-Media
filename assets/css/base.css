@@ -127,6 +127,13 @@ p strong, .text-strong { color: var(--text); font-weight: var(--weight-medium); 
   80% { transform: translate(4%, 4%); }
 }
 
+/* ---------- Ambient line-art background (very subtle) ---------- */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1;
+  background: url("../img/bg-lines.jpg") center top / cover no-repeat;
+  opacity: 0.16; pointer-events: none;
+}
+
 /* ---------- Reveal primitives (JS adds .is-in) ---------- */
 [data-reveal] {
   opacity: 0;
