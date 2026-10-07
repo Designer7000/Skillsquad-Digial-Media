@@ -459,10 +459,12 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 .footer-grid a:hover { color: var(--accent-text); }
 .footer-tag { color: var(--text-2); font-size: var(--fs-lead); margin-top: var(--sp-4); max-width: 32ch; }
 .footer-bottom {
-  display: flex; justify-content: space-between; align-items: center; gap: var(--sp-4);
+  display: flex; justify-content: center; align-items: center; gap: var(--sp-4);
   padding-block: var(--sp-6); border-top: 1px solid var(--line);
   color: var(--text-3); font-size: var(--fs-small); flex-wrap: wrap;
+  text-align: center;
 }
+.footer-bottom .copyright { color: #fdb712; }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
 

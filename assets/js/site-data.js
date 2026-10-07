@@ -14,7 +14,7 @@ window.SKILLSQUAD = {
     shortName: "Skillsquad",
     tagline: "Digital Media for Businesses Ready to Stand Out.",
     // PLACEHOLDER — replace with the real business location
-    location: "Your City, Your Country",
+    location: "Lahore, Pakistan",
     // PLACEHOLDER — replace with real contact details
     email: "skillsquaddigitalmedia@gmail.com",
     phone: "+923080328673",
