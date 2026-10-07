@@ -71,6 +71,7 @@
 /* ================= STATEMENT ================= */
 .statement-title { font-size: var(--fs-display); margin-top: var(--sp-6); max-width: 18ch; }
 .statement-title .dim { color: var(--text-3); }
+.statement-title .accent { color: var(--accent-text); }
 .statement-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8);
   margin-top: var(--sp-8); margin-bottom: var(--sp-10);
