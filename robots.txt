@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://skillsquadmedia.com/sitemap.xml
+Sitemap: https://skillsquad-digital-media.vercel.app/sitemap.xml
