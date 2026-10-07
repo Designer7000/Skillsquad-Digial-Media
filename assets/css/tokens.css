@@ -65,7 +65,7 @@
   --accent-deep:   #c77806;
   --accent-soft:   rgba(253, 184, 21, 0.10);  /* subtle accent wash */
   --accent-glow:   rgba(253, 184, 21, 0.32);  /* restrained glow */
-  --accent-text:   #ffcf4f;   /* accent text on dark (contrast-safe) */
+  --accent-text:   #fdb815;   /* accent text — brand yellow */
 
   /* ---------- Interactive states ---------- */
   --hover-wash:    rgba(244, 243, 239, 0.04);
