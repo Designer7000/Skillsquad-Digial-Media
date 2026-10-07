@@ -16,7 +16,7 @@ window.SKILLSQUAD = {
     // PLACEHOLDER — replace with the real business location
     location: "Your City, Your Country",
     // PLACEHOLDER — replace with real contact details
-    email: "hello@skillsquadmedia.com",
+    email: "skillsquaddigitalmedia@gmail.com",
     phone: "+00 000 000 0000",
     hours: "Mon – Fri, 9:00 – 18:00",
   },
