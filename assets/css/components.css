@@ -443,7 +443,7 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 .footer-giant .dot { color: var(--accent); }
 .footer-logo { margin: 0 0 var(--sp-6); }
 .footer-logo img {
-  width: clamp(160px, 22vw, 300px); height: auto; display: block;
+  width: clamp(130px, 18vw, 240px); height: auto; display: block;
 }
 .footer-grid {
   display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--sp-8);
