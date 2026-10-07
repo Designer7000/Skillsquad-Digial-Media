@@ -157,12 +157,14 @@ p strong, .text-strong { color: var(--text); font-weight: var(--weight-medium); 
   transition: transform 1200ms var(--ease-out);
   will-change: transform;
 }
-.clip-reveal.is-in img { transform: scale(1); }
+.clip-reveal.is-in img,
+.is-in .clip-reveal img { transform: scale(1); }
 .clip-reveal::after { /* wipe */
   content: ""; position: absolute; inset: 0; background: var(--bg-elev-2);
   transform-origin: top; transition: transform 900ms var(--ease-swift);
 }
-.clip-reveal.is-in::after { transform: scaleY(0); }
+.clip-reveal.is-in::after,
+.is-in .clip-reveal::after { transform: scaleY(0); }
 
 /* ---------- Reduced motion: degrade gracefully ---------- */
 @media (prefers-reduced-motion: reduce) {
