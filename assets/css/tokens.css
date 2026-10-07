@@ -44,7 +44,7 @@
 
 :root {
   /* ---------- Color: surfaces ---------- */
-  --bg:            #0a0a0b;   /* primary background (near-black) */
+  --bg:            #000000;   /* primary background (solid black) */
   --bg-elev:       #101012;   /* elevated surfaces */
   --bg-elev-2:     #161619;   /* cards / wells */
   --bg-invert:     #f4f3ef;   /* inverted sections */
