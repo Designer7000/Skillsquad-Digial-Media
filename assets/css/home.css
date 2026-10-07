@@ -33,17 +33,17 @@
 }
 .hero-visual { position: relative; }
 .hero-media {
-  border-radius: var(--r-sm); overflow: hidden;
+  border-radius: 0; overflow: visible;
   aspect-ratio: 4/5; max-height: 68vh; width: 100%;
-  box-shadow: var(--shadow-lift);
+  box-shadow: none;
   transition: transform 600ms var(--ease-out);
   transform-style: preserve-3d; will-change: transform;
   position: relative;
 }
 .hero-media::after {
   content: ""; position: absolute; inset: 0;
-  box-shadow: inset 0 0 0 1px var(--line-strong); border-radius: var(--r-sm);
-  pointer-events: none;
+  box-shadow: none; border-radius: 0;
+  pointer-events: none; display: none;
 }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; }
 .hero-caption {
