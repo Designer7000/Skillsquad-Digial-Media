@@ -23,7 +23,7 @@
   font-size: var(--fs-hero); line-height: var(--lh-tight);
   margin-top: var(--sp-6); text-transform: uppercase;
 }
-.hero-title em { font-style: normal; color: var(--accent-text); }
+.hero-title em { font-style: normal; color: var(--accent); }
 .hero-title .accent-dot { color: var(--accent); }
 .hero-copy { margin-top: var(--sp-6); max-width: 52ch; }
 .hero-ctas { margin-top: var(--sp-8); display: flex; gap: var(--sp-4); flex-wrap: wrap; }
