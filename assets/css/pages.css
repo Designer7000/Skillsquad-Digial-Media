@@ -24,6 +24,25 @@
 
 /* ---------- Page hero ---------- */
 .page-hero .lead { max-width: var(--maxw-text); }
+/* Scroll hint (services hero) */
+.scroll-hint {
+  display: inline-flex; align-items: center; gap: var(--sp-3);
+  margin-top: var(--sp-8); text-decoration: none;
+}
+.scroll-hint-line {
+  display: block; width: 2px; height: 32px; background: var(--accent);
+  animation: scroll-hint-pulse 2s ease-in-out infinite;
+  transform-origin: top;
+}
+.scroll-hint-text {
+  font-size: 0.8rem; letter-spacing: 0.25em; color: var(--text-dim);
+  text-transform: uppercase;
+}
+.scroll-hint:hover .scroll-hint-text { color: var(--accent); }
+@keyframes scroll-hint-pulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.5); opacity: 0.5; }
+}
 .page-hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
 .page-hero-media { border-radius: var(--r-md); overflow: hidden; max-width: 500px; justify-self: end; }
 .page-hero-media img { width: 100%; height: auto; display: block; }
