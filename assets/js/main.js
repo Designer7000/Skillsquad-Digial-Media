@@ -262,35 +262,49 @@
   /* ---------- Why cards: fullscreen 3D focus on hover ---------- */
   if (finePointer && !reduceMotion) {
     var whyCards = document.querySelectorAll(".why-item, .why-lead");
-    var overlay = null, showTimer = null;
+    var overlay = null, showTimer = null, hideTimer = null, currentCard = null;
 
-    function closeWhyFocus() {
+    function renderWhyFocus(card) {
+      if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.className = "why-focus-overlay";
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.appendChild(overlay);
+        document.body.classList.add("why-focus-active");
+      }
+      overlay.innerHTML = '<div class="why-focus-card">' + card.innerHTML + "</div>";
+      overlay.classList.remove("is-visible");
+      void overlay.offsetWidth;
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { if (overlay) overlay.classList.add("is-visible"); });
+      });
+      currentCard = card;
+    }
+
+    function hideWhyFocus() {
       if (!overlay) return;
       overlay.classList.remove("is-visible");
       document.body.classList.remove("why-focus-active");
       var el = overlay;
       setTimeout(function () { el.remove(); }, 400);
       overlay = null;
+      currentCard = null;
     }
 
     whyCards.forEach(function (card) {
       card.addEventListener("mouseenter", function () {
-        if (overlay) return;
-        showTimer = setTimeout(function () {
-          overlay = document.createElement("div");
-          overlay.className = "why-focus-overlay";
-          overlay.setAttribute("aria-hidden", "true");
-          overlay.innerHTML = '<div class="why-focus-card">' + card.innerHTML + "</div>";
-          document.body.appendChild(overlay);
-          document.body.classList.add("why-focus-active");
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () { overlay.classList.add("is-visible"); });
-          });
-          overlay.addEventListener("mouseleave", closeWhyFocus);
-        }, 220);
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        if (showTimer) { clearTimeout(showTimer); showTimer = null; }
+        if (overlay && currentCard === card) return;
+        if (overlay) { renderWhyFocus(card); return; }
+        showTimer = setTimeout(function () { renderWhyFocus(card); }, 220);
       });
       card.addEventListener("mouseleave", function () {
         if (showTimer) { clearTimeout(showTimer); showTimer = null; }
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          if (!document.querySelector(".why-item:hover, .why-lead:hover")) hideWhyFocus();
+        }, 120);
       });
     });
   }
