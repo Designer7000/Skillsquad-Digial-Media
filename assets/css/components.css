@@ -164,6 +164,9 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
   color: var(--text-3); white-space: nowrap; display: inline-flex; align-items: center; gap: var(--sp-8);
 }
 .marquee-track span i { color: var(--accent); font-style: normal; font-size: 0.7em; }
+.logo-marquee .marquee-track { align-items: center; gap: clamp(2.5rem, 5vw, 4.5rem); padding-right: clamp(2.5rem, 5vw, 4.5rem); animation-duration: 40s; }
+.logo-marquee .marquee-track img { height: clamp(2rem, 3.5vw, 3rem); width: auto; flex-shrink: 0; opacity: 0.85; transition: opacity var(--t-micro); }
+.logo-marquee:hover .marquee-track img { opacity: 1; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ================= SERVICE ROWS ================= */
