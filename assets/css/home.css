@@ -34,7 +34,8 @@
 .hero-visual { position: relative; }
 .hero-media {
   border-radius: 0; overflow: visible;
-  aspect-ratio: 1/1; max-height: 80vh; width: 100%;
+  aspect-ratio: 768/1376; height: 85vh; max-height: 780px;
+  margin-inline: auto;
   box-shadow: none;
   transition: transform 600ms var(--ease-out);
   transform-style: preserve-3d; will-change: transform;
