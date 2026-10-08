@@ -258,4 +258,40 @@
       }
     });
   });
+
+  /* ---------- Why cards: fullscreen 3D focus on hover ---------- */
+  if (finePointer && !reduceMotion) {
+    var whyCards = document.querySelectorAll(".why-item, .why-lead");
+    var overlay = null, showTimer = null;
+
+    function closeWhyFocus() {
+      if (!overlay) return;
+      overlay.classList.remove("is-visible");
+      document.body.classList.remove("why-focus-active");
+      var el = overlay;
+      setTimeout(function () { el.remove(); }, 400);
+      overlay = null;
+    }
+
+    whyCards.forEach(function (card) {
+      card.addEventListener("mouseenter", function () {
+        if (overlay) return;
+        showTimer = setTimeout(function () {
+          overlay = document.createElement("div");
+          overlay.className = "why-focus-overlay";
+          overlay.setAttribute("aria-hidden", "true");
+          overlay.innerHTML = '<div class="why-focus-card">' + card.innerHTML + "</div>";
+          document.body.appendChild(overlay);
+          document.body.classList.add("why-focus-active");
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { overlay.classList.add("is-visible"); });
+          });
+          overlay.addEventListener("mouseleave", closeWhyFocus);
+        }, 220);
+      });
+      card.addEventListener("mouseleave", function () {
+        if (showTimer) { clearTimeout(showTimer); showTimer = null; }
+      });
+    });
+  }
 })();

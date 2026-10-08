@@ -93,17 +93,38 @@
 }
 .why-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(1.25rem, 2.5vw, 2.5rem); }
 .why-lead { grid-column: span 6; border: 1px solid var(--line-strong); padding: clamp(1.75rem, 3vw, 3rem); background: linear-gradient(135deg, var(--bg-elev), transparent); border-radius: var(--r-sm); }
-.why-item { grid-column: span 3; border-top: 1px solid var(--line-strong); padding-top: var(--sp-5); border-radius: var(--r-sm); position: relative; transition: background var(--t-med) var(--ease-out), padding var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out), filter var(--t-med) var(--ease-out), opacity var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out); }
-.why-item:hover { background: var(--accent); padding: clamp(1.25rem, 2.5vw, 2rem); border-top-color: transparent; transform: translateY(-12px) scale(1.03); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8); z-index: 5; }
-.why-lead:hover { background: var(--accent); border-color: transparent; transform: translateY(-12px) scale(1.02); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8); z-index: 5; }
-/* 3D popup: siblings blur when one is hovered */
-.why-grid { perspective: 1200px; }
-.why-grid:hover .why-item:not(:hover), .why-grid:hover .why-lead:not(:hover) {
-  filter: blur(4px) brightness(0.65); opacity: 0.55; transform: scale(0.97);
+.why-item { grid-column: span 3; border-top: 1px solid var(--line-strong); padding-top: var(--sp-5); border-radius: var(--r-sm); position: relative; transition: background var(--t-med) var(--ease-out), padding var(--t-med) var(--ease-out); }
+.why-item:hover { background: var(--accent); padding: clamp(1.25rem, 2.5vw, 2rem); border-top-color: transparent; }
+.why-lead:hover { background: var(--accent); border-color: transparent; }
+/* Fullscreen 3D focus overlay (JS-driven) */
+.why-focus-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid; place-items: center; padding: var(--sp-6);
+  background: rgba(0,0,0,0.75);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s var(--ease-out);
+  perspective: 1400px;
 }
+.why-focus-overlay.is-visible { opacity: 1; pointer-events: auto; }
+.why-focus-card {
+  background: var(--accent); color: #0a0a0a;
+  border-radius: var(--r-md); padding: clamp(2rem, 5vw, 4rem);
+  max-width: 640px; width: min(92vw, 640px);
+  box-shadow: 0 60px 120px -20px rgba(0,0,0,0.9), 0 0 80px -20px rgba(253,184,21,0.35);
+  transform: rotateX(18deg) translateY(60px) scale(0.85);
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.why-focus-overlay.is-visible .why-focus-card { transform: rotateX(0) translateY(0) scale(1); }
+.why-focus-card .why-index, .why-focus-card h3, .why-focus-card p { color: #0a0a0a; }
+.why-focus-card .why-index { display: block; margin-bottom: var(--sp-3); }
+.why-focus-card h3 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--sp-4); }
+.why-focus-card p { font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.6; }
+body.why-focus-active .why-grid { filter: blur(8px) brightness(0.6); }
+.why-grid { transition: filter 0.35s var(--ease-out); }
 .why-item:hover .why-index, .why-item:hover h3, .why-item:hover p,
 .why-lead:hover .why-index, .why-lead:hover h3, .why-lead:hover p { color: #0a0a0a; }
-.why-lead { position: relative; transition: background var(--t-med) var(--ease-out), border-color var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out), filter var(--t-med) var(--ease-out), opacity var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out); }
+.why-lead { position: relative; transition: background var(--t-med) var(--ease-out), border-color var(--t-med) var(--ease-out); }
 .why-lead .why-index, .why-lead h3, .why-lead p, .why-item .why-index, .why-item h3, .why-item p { transition: color var(--t-micro); }
 .why-wide { grid-column: span 3; }
 .why-lead h3, .why-item h3 { font-size: clamp(1.5rem, 2.6vw, 2.25rem); margin-top: var(--sp-3); }
