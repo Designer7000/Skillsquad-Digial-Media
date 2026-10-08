@@ -58,6 +58,7 @@
 
 /* ---------- Services: detail sections ---------- */
 .service-detail { padding-block: var(--section-pad); border-top: 1px solid var(--line); }
+.service-detail#branding { border-top: 0; padding-top: var(--sp-10); }
 .svc-grid {
   display: grid; grid-template-columns: 1.02fr 0.98fr;
   gap: clamp(2.5rem, 6vw, 6rem); align-items: center;
