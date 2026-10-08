@@ -275,7 +275,7 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 
 /* ================= STATS (editorial) ================= */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-.stat { padding: var(--sp-6) var(--sp-4); border-right: 1px solid var(--line); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.stat { padding: var(--sp-5) var(--sp-4) var(--sp-3); border-right: 1px solid var(--line); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .stat:last-child { border-right: 0; }
 .stat-icon { width: 4.5rem; height: 4.5rem; margin-bottom: var(--sp-4); display: block; }
 .stat-icon img, .stat-icon svg { width: 100%; height: 100%; display: block; }

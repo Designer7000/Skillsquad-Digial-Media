@@ -65,6 +65,7 @@
 }
 
 /* ================= STATEMENT ================= */
+.section.statement { padding-bottom: var(--sp-6); }
 .statement-title { font-size: var(--fs-display); margin-top: var(--sp-6); max-width: 18ch; }
 .statement-title .dim { color: var(--text-3); }
 .statement-title .accent { color: var(--accent-text); }
