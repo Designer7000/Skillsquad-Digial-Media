@@ -165,7 +165,8 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 }
 .marquee-track span i { color: var(--accent); font-style: normal; font-size: 0.7em; }
 .logo-marquee .marquee-track { align-items: center; gap: clamp(2.5rem, 5vw, 4.5rem); padding-right: clamp(2.5rem, 5vw, 4.5rem); animation-duration: 40s; }
-.logo-marquee .marquee-track img { height: clamp(4.5rem, 8vw, 7rem); width: auto; flex-shrink: 0; opacity: 0.85; transition: opacity var(--t-micro); }
+.logo-marquee .marquee-track img { height: clamp(6rem, 10vw, 9rem); width: auto; flex-shrink: 0; opacity: 0.85; transition: opacity var(--t-micro); }
+.logo-marquee .marquee-track img[src*="alshaafi"] { height: clamp(4.5rem, 8vw, 7rem); }
 .logo-marquee:hover .marquee-track img { opacity: 1; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
