@@ -47,16 +47,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid email" });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  // TEMP DEBUG: report which env vars are visible (remove after diagnosis)
-  if (req.query && req.query.debug === "env") {
-    return res.status(200).json({
-      hasResendKey: !!apiKey,
-      vercelEnv: process.env.VERCEL_ENV || null,
-      nodeEnv: process.env.NODE_ENV || null,
-      envKeys: Object.keys(process.env).filter(k => !k.includes("KEY") && !k.includes("TOKEN") && !k.includes("SECRET")),
-    });
-  }
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_Key;
   if (!apiKey) {
     console.error("[contact] RESEND_API_KEY not set");
     return res.status(500).json({ error: "Email service not configured" });
