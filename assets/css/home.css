@@ -108,7 +108,11 @@
 .why-item:hover .why-index, .why-item:hover h3, .why-item:hover p,
 .why-lead:hover .why-index, .why-lead:hover h3, .why-lead:hover p { color: #0a0a0a; }
 .why-lead { position: relative; transition: background var(--t-med) var(--ease-out), border-color var(--t-med) var(--ease-out); }
-.why-lead .why-index, .why-lead h3, .why-lead p, .why-item .why-index, .why-item h3, .why-item p { transition: color var(--t-micro); }
+.why-lead .why-index, .why-lead h3, .why-lead p, .why-item .why-index, .why-item h3, .why-item p { transition: color var(--t-micro), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); transform: translateZ(0); }
+/* 3D depth layers: inner elements rise at different depths on hover */
+.why-item:hover .why-index, .why-lead:hover .why-index { transform: translateZ(55px); }
+.why-item:hover h3, .why-lead:hover h3 { transform: translateZ(95px); }
+.why-item:hover p, .why-lead:hover p { transform: translateZ(35px); }
 .why-wide { grid-column: span 3; }
 .why-lead h3, .why-item h3 { font-size: clamp(1.5rem, 2.6vw, 2.25rem); margin-top: var(--sp-3); }
 .why-lead > p:last-child, .why-item > p:last-child { margin-top: var(--sp-3); max-width: 52ch; }
