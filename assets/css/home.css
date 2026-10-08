@@ -52,7 +52,6 @@
   padding-top: var(--sp-6); margin-top: var(--sp-8);
   border-top: 1px solid var(--line);
 }
-.hero-est { font-size: var(--fs-label); letter-spacing: var(--tracking-label); color: var(--text-3); }
 
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr; }
@@ -60,7 +59,6 @@
   .hero-media { aspect-ratio: 1/1; max-height: none; }
 }
 @media (max-width: 640px) {
-  .hero-est { display: none; }
   .hero-ctas .btn { flex: 1; }
 }
 
