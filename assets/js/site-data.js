@@ -155,10 +155,11 @@ window.SKILLSQUAD = {
   ],
 
   /* ---------- Contact form ----------
-     endpoint: where inquiries are sent. PLACEHOLDER — wire to a
-     real backend (Formspree, Basin, custom API) before launch. */
+     endpoint: Vercel serverless function (/api/contact.js) that delivers
+     inquiries via Resend to the site owner's inbox.
+     Requires RESEND_API_KEY env var on Vercel. */
   form: {
-    endpoint: "",  // e.g. "https://formspree.io/f/xxxx" — empty = demo mode
+    endpoint: "/api/contact",
     emailFallback: true,
   },
 };
