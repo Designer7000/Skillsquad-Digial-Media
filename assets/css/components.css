@@ -191,7 +191,7 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
   font-size: clamp(1.5rem, 3.2vw, 2.75rem);
   transition: transform var(--t-med) var(--ease-out), color var(--t-micro);
 }
-.service-row:hover h3, .service-row:focus-within h3 { transform: translateX(12px); }
+.service-row:hover h3, .service-row:focus-within h3 { transform: translateX(12px); color: var(--accent-text); }
 .service-row .tags {
   display: flex; gap: var(--sp-2); flex-wrap: wrap; justify-content: flex-end;
   max-width: 22rem;
