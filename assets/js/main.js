@@ -259,4 +259,40 @@
     });
   });
 
+  /* ---------- Why cards: 3D tilt following cursor ---------- */
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll(".why-item, .why-lead").forEach(function (card) {
+      var glare = document.createElement("div");
+      glare.className = "why-glare";
+      glare.setAttribute("aria-hidden", "true");
+      card.appendChild(glare);
+
+      var raf = null;
+      card.addEventListener("mousemove", function (e) {
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = null;
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width;
+          var py = (e.clientY - r.top) / r.height;
+          var rY = (px - 0.5) * 16;
+          var rX = (0.5 - py) * 16;
+          card.style.transform =
+            "perspective(1100px) rotateX(" + rX.toFixed(2) + "deg) rotateY(" + rY.toFixed(2) + "deg) translateY(-8px) scale(1.02)";
+          card.style.setProperty("--gx", (px * 100).toFixed(1) + "%");
+          card.style.setProperty("--gy", (py * 100).toFixed(1) + "%");
+        });
+      });
+      card.addEventListener("mouseleave", function () {
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+        card.style.transition = "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
+        card.style.transform = "";
+        setTimeout(function () { card.style.transition = ""; }, 500);
+      });
+      card.addEventListener("mouseenter", function () {
+        card.style.transition = "transform 0.12s ease-out";
+        setTimeout(function () { card.style.transition = ""; }, 130);
+      });
+    });
+  }
 })();
