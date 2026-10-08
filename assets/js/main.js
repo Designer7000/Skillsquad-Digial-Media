@@ -188,26 +188,6 @@
     }, { passive: true });
   }
 
-  /* ---------- Service row floating preview (desktop) ---------- */
-  if (finePointer && !reduceMotion) {
-    var preview = document.querySelector(".service-preview");
-    if (preview) {
-      var pimg = preview.querySelector("img");
-      document.querySelectorAll(".service-row").forEach(function (row) {
-        row.addEventListener("mouseenter", function () {
-          var src = row.getAttribute("data-img");
-          if (src && pimg) { pimg.src = src; }
-          preview.classList.add("is-on");
-        });
-        row.addEventListener("mouseleave", function () { preview.classList.remove("is-on"); });
-      });
-      document.addEventListener("mousemove", function (e) {
-        preview.style.left = (e.clientX + 28) + "px";
-        preview.style.top = (e.clientY - 100) + "px";
-      });
-    }
-  }
-
   /* ---------- Testimonial rotator ---------- */
   var testiWrap = document.querySelector("[data-testimonials]");
   if (testiWrap) {
