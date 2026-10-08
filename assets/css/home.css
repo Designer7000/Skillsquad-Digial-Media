@@ -99,7 +99,13 @@
 }
 .why-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(1.25rem, 2.5vw, 2.5rem); }
 .why-lead { grid-column: span 6; border: 1px solid var(--line-strong); padding: clamp(1.75rem, 3vw, 3rem); background: linear-gradient(135deg, var(--bg-elev), transparent); border-radius: var(--r-sm); }
-.why-item { grid-column: span 3; border-top: 1px solid var(--line-strong); padding-top: var(--sp-5); }
+.why-item { grid-column: span 3; border-top: 1px solid var(--line-strong); padding-top: var(--sp-5); border-radius: var(--r-sm); transition: background var(--t-med) var(--ease-out), padding var(--t-med) var(--ease-out); }
+.why-item:hover { background: var(--accent); padding: clamp(1.25rem, 2.5vw, 2rem); border-top-color: transparent; }
+.why-lead:hover { background: var(--accent); border-color: transparent; }
+.why-item:hover .why-index, .why-item:hover h3, .why-item:hover p,
+.why-lead:hover .why-index, .why-lead:hover h3, .why-lead:hover p { color: #0a0a0a; }
+.why-lead { transition: background var(--t-med) var(--ease-out), border-color var(--t-med) var(--ease-out); }
+.why-lead .why-index, .why-lead h3, .why-lead p, .why-item .why-index, .why-item h3, .why-item p { transition: color var(--t-micro); }
 .why-wide { grid-column: span 3; }
 .why-lead h3, .why-item h3 { font-size: clamp(1.5rem, 2.6vw, 2.25rem); margin-top: var(--sp-3); }
 .why-lead > p:last-child, .why-item > p:last-child { margin-top: var(--sp-3); max-width: 52ch; }
