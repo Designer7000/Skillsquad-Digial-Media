@@ -135,6 +135,7 @@
 .svc-type.alt .ghost-num { left: auto; right: 0; }
 .svc-type-inner { position: relative; z-index: 1; max-width: 58rem; }
 .svc-type.alt .svc-type-inner { margin-left: auto; }
+.svc-type.alt .svc-grid .svc-type-inner,
 .svc-grid .svc-type-inner { margin-left: 0; }
 
 /* ---------- Services: compact process strip ---------- */
