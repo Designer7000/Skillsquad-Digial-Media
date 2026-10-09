@@ -462,7 +462,7 @@
 
   function restart() {
     if (timer) clearInterval(timer);
-    timer = setInterval(function () { goTo(current + 1); }, 4500);
+    timer = setInterval(function () { goTo(current + 1); }, 3000);
   }
 
   prevBtn.addEventListener('click', function () { goTo(current - 1); restart(); });
