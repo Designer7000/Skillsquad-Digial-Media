@@ -47,12 +47,10 @@ window.SKILLSQUAD = {
     { n: "02", title: "Graphic Design", tags: ["Print", "Editorial", "Campaigns"], desc: "High-impact graphic design for campaigns, print and digital, from concept to press-ready artwork with obsessive attention to detail.", img: "work-pulse.jpg" },
     { n: "03", title: "UI/UX Design", tags: ["Research", "Wireframes", "Prototypes"], desc: "Interfaces that feel effortless. Research-driven UX and refined UI for web and mobile products people actually enjoy using.", img: "work-atlas.jpg" },
     { n: "04", title: "Website Development", tags: ["Design", "Build", "CMS"], desc: "Fast, accessible, conversion-focused websites. Designed in-house and built with clean, maintainable code.", img: "work-atlas.jpg" },
-    { n: "05", title: "Social Media Marketing", tags: ["Strategy", "Content", "Growth"], desc: "Content systems and campaigns that build audiences and turn attention into business results.", img: "work-pulse.jpg" },
-    { n: "06", title: "Video & Motion", tags: ["Editing", "Motion Graphics", "Reels"], desc: "Scroll-stopping video editing and motion graphics, cut and animated for every platform.", img: "work-orbit.jpg" },
-    { n: "07", title: "3D & VFX", tags: ["3D Modeling", "Animation", "VFX"], desc: "Dimensional storytelling: 3D modeling, 2D/3D animation and visual effects that give brands physical presence.", img: "work-orbit.jpg" },
-    { n: "08", title: "Digital Marketing", tags: ["SEO", "Ads", "Analytics"], desc: "Performance-minded digital marketing that connects creative output to measurable growth.", img: "work-lumen.jpg" },
-    { n: "09", title: "AI Creative Solutions", tags: ["Workflows", "Concepts", "Production"], desc: "Modern AI pipelines accelerate ideation and production, while human creative direction protects originality, quality and strategy.", img: "work-orbit.jpg" },
-    { n: "10", title: "Print & 3D Signage", tags: ["Print Media", "Sign Boards", "Large Format"], desc: "From premium print collateral to dimensional 3D sign boards that dominate physical space.", img: "work-verde.jpg" },
+    { n: "05", title: "Video & Motion", tags: ["Editing", "Motion Graphics", "Reels"], desc: "Scroll-stopping video editing and motion graphics, cut and animated for every platform.", img: "work-orbit.jpg" },
+    { n: "06", title: "Digital Marketing", tags: ["SEO", "Ads", "Analytics"], desc: "Performance-minded digital marketing that connects creative output to measurable growth.", img: "work-lumen.jpg" },
+    { n: "07", title: "AI Creative Solutions", tags: ["Workflows", "Concepts", "Production"], desc: "Modern AI pipelines accelerate ideation and production, while human creative direction protects originality, quality and strategy.", img: "work-orbit.jpg" },
+    { n: "08", title: "Print & 3D Signage", tags: ["Print Media", "Sign Boards", "Large Format"], desc: "From premium print collateral to dimensional 3D sign boards that dominate physical space.", img: "work-verde.jpg" },
   ],
 
   /* ---------- Projects (REAL WORK — Hafiz Tayyab Sheikh Behance portfolio) ---------- */
@@ -114,7 +112,7 @@ window.SKILLSQUAD = {
     { n: "03", title: "Create", desc: "Turn strategy into visual concepts, prototypes and digital experiences with intent." },
     { n: "04", title: "Refine", desc: "Test, review, polish and strengthen the strongest direction until it is undeniable." },
     { n: "05", title: "Launch", desc: "Prepare and deliver the final experience across every relevant channel, flawlessly." },
-    { n: "06", title: "Grow", desc: "Evaluate, evolve and expand the creative system as the business grows." },
+    { n: "05", title: "Grow", desc: "Evaluate, evolve and expand the creative system as the business grows." },
   ],
 
   /* ---------- Differentiators ---------- */
