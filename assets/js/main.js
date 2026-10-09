@@ -296,4 +296,114 @@
     });
   }
 
+  /* ---------- CTA interactive gold particles (mouse-reactive) ---------- */
+  (function () {
+    var canvas = document.querySelector(".cta-particles");
+    if (!canvas || reduceMotion) return;
+    var ctx = canvas.getContext("2d");
+    var section = canvas.closest(".cta-band");
+    var W, H, parts = [];
+    var COUNT = 130;
+    // base drift: slow, one direction (up-right)
+    var BASE_VX = 0.22, BASE_VY = -0.35;
+
+    var mouse = { x: -9999, y: -9999, vx: 0, vy: 0, lastX: -9999, lastY: -9999, active: false };
+
+    function resize() {
+      var r = canvas.parentElement.getBoundingClientRect();
+      W = canvas.width = Math.max(1, Math.floor(r.width));
+      H = canvas.height = Math.max(1, Math.floor(r.height));
+    }
+    function spawn(init) {
+      return {
+        x: Math.random() * W,
+        y: init ? Math.random() * H : (Math.random() < 0.5 ? H + 8 : Math.random() * H),
+        r: 0.7 + Math.random() * 2.4,
+        vx: BASE_VX * (0.6 + Math.random() * 0.8),
+        vy: BASE_VY * (0.6 + Math.random() * 0.8),
+        a: 0.25 + Math.random() * 0.65,
+        tw: Math.random() * Math.PI * 2,
+        ts: 0.015 + Math.random() * 0.045
+      };
+    }
+    function init() {
+      resize();
+      parts = [];
+      for (var i = 0; i < COUNT; i++) parts.push(spawn(true));
+    }
+    init();
+    window.addEventListener("resize", init);
+
+    section.addEventListener("mousemove", function (e) {
+      var r = canvas.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      if (mouse.lastX > -9999) {
+        mouse.vx = (x - mouse.lastX) * 0.35;
+        mouse.vy = (y - mouse.lastY) * 0.35;
+      }
+      mouse.lastX = x; mouse.lastY = y;
+      mouse.x = x; mouse.y = y;
+      mouse.active = true;
+      clearTimeout(mouse.t);
+      mouse.t = setTimeout(function () { mouse.active = false; mouse.vx = 0; mouse.vy = 0; }, 120);
+    });
+    section.addEventListener("mouseleave", function () {
+      mouse.active = false; mouse.vx = 0; mouse.vy = 0;
+      mouse.lastX = -9999; mouse.x = -9999;
+    });
+
+    var visible = true;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(canvas);
+    }
+
+    (function tick() {
+      requestAnimationFrame(tick);
+      if (!visible) return;
+      ctx.clearRect(0, 0, W, H);
+      var mvx = mouse.active ? mouse.vx : 0;
+      var mvy = mouse.active ? mouse.vy : 0;
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        p.tw += p.ts;
+        // ease velocity toward base drift + mouse push
+        var targetVX = p.vx * 0.985 + BASE_VX * 0.015 + mvx * 0.06;
+        var targetVY = p.vy * 0.985 + BASE_VY * 0.015 + mvy * 0.06;
+        // extra push for particles near the cursor
+        if (mouse.active) {
+          var dx = p.x - mouse.x, dy = p.y - mouse.y;
+          var d2 = dx * dx + dy * dy;
+          if (d2 < 32400) {
+            var d = Math.sqrt(d2) || 1;
+            var f = (180 - d) / 180 * 0.9;
+            targetVX += (mvx * 0.35 + dx / d * 0.4) * f;
+            targetVY += (mvy * 0.35 + dy / d * 0.4) * f;
+          }
+        }
+        p.vx = targetVX; p.vy = targetVY;
+        p.x += p.vx + Math.sin(p.tw) * 0.2;
+        p.y += p.vy;
+        if (p.y < -12) { p.y = H + 8; p.x = Math.random() * W; }
+        if (p.y > H + 12) { p.y = -8; p.x = Math.random() * W; }
+        if (p.x < -12) p.x = W + 8;
+        if (p.x > W + 12) p.x = -8;
+        var flicker = p.a * (0.6 + 0.4 * Math.sin(p.tw * 2));
+        var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3.2);
+        g.addColorStop(0, "rgba(253,184,21," + flicker.toFixed(3) + ")");
+        g.addColorStop(0.5, "rgba(253,184,21," + (flicker * 0.35).toFixed(3) + ")");
+        g.addColorStop(1, "rgba(253,184,21,0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2);
+        ctx.fill();
+        // bright core
+        ctx.fillStyle = "rgba(255,225,150," + (flicker * 0.9).toFixed(3) + ")";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 0.7, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // decay mouse velocity
+      mouse.vx *= 0.9; mouse.vy *= 0.9;
+    })();
+  })();
 })();
