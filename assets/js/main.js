@@ -407,3 +407,77 @@
     })();
   })();
 })();
+
+/* ---------- 3D Testimonial Carousel ---------- */
+(function () {
+  var carousel = document.querySelector('.testi-carousel');
+  if (!carousel) return;
+  var cards = Array.prototype.slice.call(carousel.querySelectorAll('.testi-card'));
+  var dotsWrap = carousel.querySelector('.testi-dots');
+  var prevBtn = carousel.querySelector('.testi-prev');
+  var nextBtn = carousel.querySelector('.testi-next');
+  var n = cards.length;
+  var current = 0;
+  var timer = null;
+
+  // Build dots
+  var dots = cards.map(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'testi-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+    d.addEventListener('click', function () { goTo(i); restart(); });
+    dotsWrap.appendChild(d);
+    return d;
+  });
+
+  function layout() {
+    cards.forEach(function (card, i) {
+      var offset = ((i - current) % n + n) % n; // 0 = front, 1 = right, n-1 = left
+      var abs = Math.min(offset, n - offset);
+      var dir = offset <= n / 2 ? 1 : -1;
+      if (offset === 0) {
+        card.style.transform = 'translateZ(220px) rotateY(0deg)';
+        card.style.opacity = '1';
+        card.style.filter = 'none';
+        card.style.zIndex = '10';
+        card.style.pointerEvents = 'auto';
+      } else {
+        var angle = dir * Math.min(abs * 38, 76);
+        var z = 220 - abs * 140;
+        var x = dir * abs * 42;
+        card.style.transform = 'translateX(' + x + '%) translateZ(' + z + 'px) rotateY(' + (-angle) + 'deg)';
+        card.style.opacity = String(Math.max(0.25, 1 - abs * 0.3));
+        card.style.filter = 'brightness(' + Math.max(0.4, 1 - abs * 0.25) + ')';
+        card.style.zIndex = String(10 - abs);
+        card.style.pointerEvents = 'none';
+      }
+      dots[i].classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(i) {
+    current = ((i % n) + n) % n;
+    layout();
+  }
+
+  function restart() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(function () { goTo(current + 1); }, 4000);
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(current - 1); restart(); });
+  nextBtn.addEventListener('click', function () { goTo(current + 1); restart(); });
+  carousel.addEventListener('mouseenter', function () { if (timer) clearInterval(timer); });
+  carousel.addEventListener('mouseleave', restart);
+
+  // Touch swipe
+  var startX = 0;
+  carousel.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); restart(); }
+  }, { passive: true });
+
+  layout();
+  restart();
+})();
