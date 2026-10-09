@@ -221,26 +221,26 @@
   .team-photo { aspect-ratio: 4/3; }
 }
 
-/* ---------- Testimonials ---------- */
-.testi-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-6); margin-top: var(--sp-10);
+/* ---------- Testimonials 3D Carousel ---------- */
+.testi-carousel { margin-top: var(--sp-10); perspective: 1400px; }
+.testi-stage {
+  position: relative; height: 340px;
+  transform-style: preserve-3d;
 }
 .testi-card {
-  position: relative; background: var(--bg-elev);
+  position: absolute; top: 0; left: 50%;
+  width: min(560px, 88%);
+  margin-left: calc(min(560px, 88%) / -2);
+  background: var(--bg-elev);
   border: 1px solid var(--line); border-radius: var(--r-md);
-  padding: var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-5);
-  transition: transform var(--t-base), border-color var(--t-base), box-shadow var(--t-base);
-  overflow: hidden;
+  padding: var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-4);
+  overflow: hidden; backface-visibility: hidden;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease, filter 0.9s ease;
 }
 .testi-card::before {
   content: "\201C"; position: absolute; top: -0.5rem; right: 1rem;
   font-family: var(--font-display); font-size: 7rem; line-height: 1;
   color: var(--accent); opacity: 0.12; pointer-events: none;
-}
-.testi-card:hover {
-  transform: translateY(-8px); border-color: var(--accent);
-  box-shadow: 0 24px 60px rgba(253, 184, 21, 0.12);
 }
 .testi-stars { color: var(--accent-text); font-size: 1.1rem; letter-spacing: 0.15em; }
 .testi-card blockquote {
@@ -257,4 +257,22 @@
 }
 .testi-name { font-weight: var(--weight-bold); color: var(--text); margin: 0; }
 .testi-role { font-size: var(--fs-small); color: var(--text-3); margin: 0; }
-@media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr; } }
+.testi-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: var(--sp-6); margin-top: var(--sp-8);
+}
+.testi-prev, .testi-next {
+  width: 3rem; height: 3rem; border-radius: 50%;
+  border: 1px solid var(--line-strong); background: transparent; color: var(--text);
+  font-size: 1.25rem; cursor: pointer;
+  transition: border-color var(--t-base), color var(--t-base), transform var(--t-base);
+}
+.testi-prev:hover, .testi-next:hover { border-color: var(--accent); color: var(--accent-text); transform: scale(1.08); }
+.testi-dots { display: flex; gap: var(--sp-3); }
+.testi-dot {
+  width: 0.6rem; height: 0.6rem; border-radius: 50%;
+  background: var(--line-strong); border: none; padding: 0; cursor: pointer;
+  transition: background var(--t-base), transform var(--t-base);
+}
+.testi-dot.active { background: var(--accent); transform: scale(1.35); }
+@media (max-width: 640px) { .testi-stage { height: 420px; } }
