@@ -440,7 +440,6 @@
         card.style.opacity = '1';
         card.style.filter = 'none';
         card.style.zIndex = '10';
-        card.style.pointerEvents = 'auto';
       } else {
         var angle = dir * Math.min(abs * 38, 76);
         var z = 220 - abs * 140;
@@ -449,8 +448,9 @@
         card.style.opacity = String(Math.max(0.25, 1 - abs * 0.3));
         card.style.filter = 'brightness(' + Math.max(0.4, 1 - abs * 0.25) + ')';
         card.style.zIndex = String(10 - abs);
-        card.style.pointerEvents = 'none';
       }
+      card.style.pointerEvents = 'auto';
+      card.style.cursor = offset === 0 ? 'grab' : 'pointer';
       dots[i].classList.toggle('active', i === current);
     });
   }
@@ -480,6 +480,7 @@
 
   // Mouse drag
   var dragging = false;
+  var wasDrag = false;
   var dragX = 0;
   var dragDX = 0;
   var stage = carousel.querySelector('.testi-stage');
@@ -505,13 +506,25 @@
   window.addEventListener('mouseup', function (e) {
     if (!dragging) return;
     dragging = false;
+    wasDrag = Math.abs(dragDX) > 10;
     stage.style.cursor = 'grab';
     stage.style.transition = '';
     stage.style.transform = '';
-    if (Math.abs(dragDX) > 60) {
+    if (wasDrag && Math.abs(dragDX) > 60) {
       goTo(current + (dragDX < 0 ? 1 : -1));
     }
+    dragDX = 0;
     restart();
+    // Clear the drag flag after click events have fired
+    setTimeout(function () { wasDrag = false; }, 50);
+  });
+
+  // Click a back card to bring it to front
+  cards.forEach(function (card, i) {
+    card.addEventListener('click', function () {
+      if (wasDrag) return; // it was a drag, not a tap
+      if (i !== current) { goTo(i); restart(); }
+    });
   });
 
   layout();
