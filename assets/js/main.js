@@ -462,13 +462,13 @@
 
   function restart() {
     if (timer) clearInterval(timer);
-    timer = setInterval(function () { goTo(current + 1); }, 4000);
+    timer = setInterval(function () { goTo(current + 1); }, 4500);
   }
 
   prevBtn.addEventListener('click', function () { goTo(current - 1); restart(); });
   nextBtn.addEventListener('click', function () { goTo(current + 1); restart(); });
-  carousel.addEventListener('mouseenter', function () { if (timer) clearInterval(timer); });
-  carousel.addEventListener('mouseleave', restart);
+  carousel.addEventListener('mouseenter', function () { if (!dragging && timer) clearInterval(timer); });
+  carousel.addEventListener('mouseleave', function () { if (!dragging) restart(); });
 
   // Touch swipe
   var startX = 0;
@@ -477,6 +477,42 @@
     var dx = e.changedTouches[0].clientX - startX;
     if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); restart(); }
   }, { passive: true });
+
+  // Mouse drag
+  var dragging = false;
+  var dragX = 0;
+  var dragDX = 0;
+  var stage = carousel.querySelector('.testi-stage');
+  stage.style.cursor = 'grab';
+
+  carousel.addEventListener('mousedown', function (e) {
+    dragging = true;
+    dragX = e.clientX;
+    dragDX = 0;
+    stage.style.cursor = 'grabbing';
+    if (timer) clearInterval(timer);
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', function (e) {
+    if (!dragging) return;
+    dragDX = e.clientX - dragX;
+    // Live feedback: tilt the whole stage slightly with the drag
+    stage.style.transition = 'none';
+    stage.style.transform = 'translateX(' + (dragDX * 0.15) + 'px) rotateY(' + (dragDX * 0.02) + 'deg)';
+  });
+
+  window.addEventListener('mouseup', function (e) {
+    if (!dragging) return;
+    dragging = false;
+    stage.style.cursor = 'grab';
+    stage.style.transition = '';
+    stage.style.transform = '';
+    if (Math.abs(dragDX) > 60) {
+      goTo(current + (dragDX < 0 ? 1 : -1));
+    }
+    restart();
+  });
 
   layout();
   restart();

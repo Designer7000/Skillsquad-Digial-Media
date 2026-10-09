@@ -226,6 +226,7 @@
 .testi-stage {
   position: relative; height: 340px;
   transform-style: preserve-3d;
+  user-select: none; -webkit-user-select: none;
 }
 .testi-card {
   position: absolute; top: 0; left: 50%;
