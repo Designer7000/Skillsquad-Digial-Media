@@ -130,6 +130,9 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 }
 .btn-ghost { border-color: var(--line-strong); color: var(--text); background: transparent; }
 .btn-ghost:hover { border-color: var(--text); background: var(--hover-wash); transform: translateY(-2px); }
+.btn-whatsapp { background: #25D366; color: #0a0a0a; border: 1px solid #25D366; }
+.btn-whatsapp:hover { background: #1fb857; border-color: #1fb857; color: #0a0a0a; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37, 211, 102, 0.35); }
+.btn-whatsapp .wa-icon { width: 1.25em; height: 1.25em; flex-shrink: 0; }
 .btn-light { background: var(--text); color: var(--text-invert); }
 .btn-light:hover { background: #fff; transform: translateY(-2px); box-shadow: var(--shadow-lift); }
 .btn-sm { padding: 0.7rem 1.25rem; font-size: 0.78rem; }
