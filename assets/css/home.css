@@ -222,7 +222,7 @@
 }
 
 /* ---------- Testimonials 3D Carousel ---------- */
-.testi-carousel { margin-top: var(--sp-10); perspective: 1400px; }
+.testi-carousel { margin-top: clamp(3rem, 6vw, 5rem); perspective: 1400px; }
 .testi-stage {
   position: relative; height: 340px;
   transform-style: preserve-3d;
