@@ -35,7 +35,7 @@
   transform-origin: top;
 }
 .scroll-hint-text {
-  font-size: 0.8rem; letter-spacing: 0.25em; color: var(--text-dim);
+  font-size: 0.8rem; letter-spacing: 0.25em; color: var(--text-3); /* was undefined --text-dim */
   text-transform: uppercase;
 }
 .scroll-hint:hover .scroll-hint-text { color: var(--accent); }
@@ -283,4 +283,14 @@
 @media (prefers-reduced-motion: reduce) {
   .filter-btn, .cap-link, .value-row, .faq-item summary::after,
   .svc-media img, .cap-link .name, .cap-link .arr { transition: none; }
+}
+
+/* ---------- Small phones (<=480px): stack tight two-column bits ---------- */
+@media (max-width: 480px) {
+  .svc-list { grid-template-columns: 1fr; }
+  .contact-lines > div { grid-template-columns: 1fr; gap: var(--sp-1); }
+  .cap-link { grid-template-columns: 2.75rem 1fr 1.5rem; gap: var(--sp-3); }
+  .value-row { padding: var(--sp-5) 0; }
+  .page-hero .lead { font-size: 1rem; }
+  .filter-btn { padding: var(--sp-2) var(--sp-4); }
 }

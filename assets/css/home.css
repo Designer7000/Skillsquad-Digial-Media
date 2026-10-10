@@ -55,8 +55,10 @@
 
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { max-width: 560px; }
-  .hero-media { aspect-ratio: 1/1; max-height: none; }
+  .hero-visual { max-width: 560px; width: 100%; }
+  /* FIX: base rule sets height:85vh — without resetting it here the
+     aspect-ratio makes the media 85vh WIDE on phones (overflow + crop) */
+  .hero-media { aspect-ratio: 1/1; height: auto; width: 100%; max-height: none; }
 }
 @media (max-width: 640px) {
   .hero-ctas .btn { flex: 1; }
@@ -207,7 +209,7 @@
 }
 .team-photo--empty span { color: var(--text-3); }
 .team-card h3 {
-  font-size: var(--fs-h4); margin-bottom: var(--sp-1);
+  font-size: var(--fs-h3); margin-bottom: var(--sp-1); /* was undefined --fs-h4 */
 }
 .team-card .role {
   font-size: var(--fs-small); color: var(--text-3);
@@ -266,14 +268,69 @@
   width: 3rem; height: 3rem; border-radius: 50%;
   border: 1px solid var(--line-strong); background: transparent; color: var(--text);
   font-size: 1.25rem; cursor: pointer;
-  transition: border-color var(--t-base), color var(--t-base), transform var(--t-base);
+  transition: border-color var(--t-micro), color var(--t-micro), transform var(--t-micro) var(--ease-out); /* was undefined --t-base */
 }
 .testi-prev:hover, .testi-next:hover { border-color: var(--accent); color: var(--accent-text); transform: scale(1.08); }
 .testi-dots { display: flex; gap: var(--sp-3); }
 .testi-dot {
   width: 0.6rem; height: 0.6rem; border-radius: 50%;
   background: var(--line-strong); border: none; padding: 0; cursor: pointer;
-  transition: background var(--t-base), transform var(--t-base);
+  transition: background var(--t-micro), transform var(--t-micro) var(--ease-out); /* was undefined --t-base */
 }
 .testi-dot.active { background: var(--accent); transform: scale(1.35); }
 @media (max-width: 640px) { .testi-stage { height: 420px; } }
+
+/* ---------- Mobile polish (<=640px) ---------- */
+@media (max-width: 640px) {
+  /* Hero */
+  .hero-title { font-size: clamp(2.25rem, 11vw, 3rem); }
+  .hero-ctas .btn { flex: 1 1 100%; justify-content: center; }
+  .hero-visual { max-width: 100%; }
+
+  /* Testimonials: flatter, full-width cards */
+  .testi-carousel { perspective: 900px; }
+  .testi-stage { height: 460px; }
+  .testi-card { width: 92%; margin-left: -46%; padding: var(--sp-6); }
+  .testi-card blockquote { font-size: 1rem; }
+  .testi-nav { gap: var(--sp-4); }
+  .testi-prev, .testi-next { width: 2.75rem; height: 2.75rem; }
+
+  /* Logo marquee: smaller logos */
+  .logo-marquee .marquee-track img { height: clamp(3.5rem, 14vw, 5rem); }
+  .logo-marquee .marquee-track img[src*="alshaafi"] { height: clamp(2.75rem, 11vw, 4rem); }
+
+  /* Stats: smaller icons */
+  .stat-icon { width: 3.5rem; height: 3.5rem; }
+
+  /* Section spacing */
+  .section { padding-block: var(--sp-10); }
+}
+
+/* ---------- Small phones (<=480px): stack tight two-column bits ---------- */
+@media (max-width: 480px) {
+  .contact-lines > div { grid-template-columns: 1fr; gap: var(--sp-1); }
+  .hero-meta { gap: var(--sp-5); }
+  .hero-title { font-size: clamp(2.1rem, 12.5vw, 2.75rem); }
+  .stat .value { font-size: clamp(2rem, 11vw, 2.75rem); }
+  .work-head { gap: var(--sp-4); }
+  .cta-band h2 { font-size: clamp(2.1rem, 10vw, 2.75rem); }
+}
+
+/* ---------- Touch devices: don't leave hover states stuck ----------
+   On phones :hover fires on tap and sticks. Keep the yellow why-cards /
+   service-row highlights as press feedback (:active) instead. */
+@media (hover: none) {
+  .why-item:hover { background: transparent; border-color: var(--line-strong); padding: var(--sp-5) 0 0; }
+  .why-lead:hover { background: linear-gradient(135deg, var(--bg-elev), transparent); border-color: var(--line-strong); }
+  .why-item:hover .why-index, .why-item:hover h3, .why-item:hover p,
+  .why-lead:hover .why-index, .why-lead:hover h3, .why-lead:hover p { color: inherit; }
+  .why-item:hover h3, .why-lead:hover h3 { color: var(--text); }
+  .why-item:hover .why-index, .why-lead:hover .why-index { color: var(--accent-text); }
+  .why-item:hover .why-glare, .why-lead:hover .why-glare { opacity: 0; }
+  .why-item:active, .why-lead:active { background: var(--accent); border-color: transparent; }
+  .why-item:active .why-index, .why-item:active h3, .why-item:active p,
+  .why-lead:active .why-index, .why-lead:active h3, .why-lead:active p { color: #0a0a0a; }
+  .service-row:hover h3 { transform: none; color: inherit; }
+  .service-row:hover .num { transform: none; color: var(--text-3); }
+  .service-row:active h3 { color: var(--accent-text); }
+}

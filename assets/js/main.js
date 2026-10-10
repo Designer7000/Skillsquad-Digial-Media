@@ -431,19 +431,25 @@
   });
 
   function layout() {
+    var isMobile = window.innerWidth <= 640;
+    var frontZ = isMobile ? 120 : 220;
+    var stepZ = isMobile ? 90 : 140;
+    var stepX = isMobile ? 30 : 42;
+    var stepAngle = isMobile ? 28 : 38;
+    var maxAngle = isMobile ? 56 : 76;
     cards.forEach(function (card, i) {
       var offset = ((i - current) % n + n) % n; // 0 = front, 1 = right, n-1 = left
       var abs = Math.min(offset, n - offset);
       var dir = offset <= n / 2 ? 1 : -1;
       if (offset === 0) {
-        card.style.transform = 'translateZ(220px) rotateY(0deg)';
+        card.style.transform = 'translateZ(' + frontZ + 'px) rotateY(0deg)';
         card.style.opacity = '1';
         card.style.filter = 'none';
         card.style.zIndex = '10';
       } else {
-        var angle = dir * Math.min(abs * 38, 76);
-        var z = 220 - abs * 140;
-        var x = dir * abs * 42;
+        var angle = dir * Math.min(abs * stepAngle, maxAngle);
+        var z = frontZ - abs * stepZ;
+        var x = dir * abs * stepX;
         card.style.transform = 'translateX(' + x + '%) translateZ(' + z + 'px) rotateY(' + (-angle) + 'deg)';
         card.style.opacity = String(Math.max(0.25, 1 - abs * 0.3));
         card.style.filter = 'brightness(' + Math.max(0.4, 1 - abs * 0.25) + ')';
