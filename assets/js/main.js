@@ -63,7 +63,8 @@
   /* ---------- Active nav link ---------- */
   var path = location.pathname.replace(/\/$/, "") || "/";
   document.querySelectorAll(".nav-links a, .mobile-menu a.mlink").forEach(function (a) {
-    var href = (a.getAttribute("href") || "").split("#")[0] || "/";
+    var href = a.getAttribute("href") || "";
+    if (href.indexOf("#") !== -1) return; /* anchor links are never the current page */
     if (href === path) a.setAttribute("aria-current", "page");
   });
 
