@@ -213,6 +213,7 @@
 .team-photo--empty span { color: var(--text-3); }
 .team-card h3 {
   font-size: var(--fs-h3); margin-bottom: var(--sp-1); /* was undefined --fs-h4 */
+  letter-spacing: 0.03em;
 }
 .team-card .role {
   font-size: var(--fs-small); color: var(--text-3);
