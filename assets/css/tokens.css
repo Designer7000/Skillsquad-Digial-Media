@@ -89,8 +89,8 @@
   --lh-heading:   1.12;
   --lh-body:      1.65;
 
-  --tracking-tight: -0.03em;
-  --tracking-display: -0.035em;
+  --tracking-tight: 0.02em;
+  --tracking-display: 0.02em;
   --tracking-label: 0.14em;
 
   --weight-regular: 400;

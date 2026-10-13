@@ -367,7 +367,8 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
   background: linear-gradient(135deg, var(--bg-elev-2), var(--bg-elev));
   border: 1px solid var(--line-strong);
   display: grid; place-items: center;
-  font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--accent-text);
+  font-family: var(--font-display);
+  letter-spacing: 0.02em; font-weight: var(--weight-bold); color: var(--accent-text);
 }
 .testimonial .who .name { font-weight: var(--weight-medium); color: var(--text); }
 .testimonial .who .role { font-size: var(--fs-small); color: var(--text-3); }
@@ -511,7 +512,8 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 
 .counter-chip {
   display: inline-flex; align-items: baseline; gap: var(--sp-2);
-  font-family: var(--font-display); color: var(--text-3); font-size: var(--fs-small);
+  font-family: var(--font-display);
+  letter-spacing: 0.02em; color: var(--text-3); font-size: var(--fs-small);
 }
 .counter-chip .cur { color: var(--text); font-size: 1.1rem; }
 

@@ -247,6 +247,7 @@
 }
 .deliverables .tick {
   font-family: var(--font-display);
+  letter-spacing: 0.02em;
   color: var(--accent-text);
   font-size: var(--fs-small);
   flex: none;
