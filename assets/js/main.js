@@ -61,10 +61,10 @@
   }
 
   /* ---------- Active nav link ---------- */
-  var path = location.pathname.split("/").pop() || "index.html";
+  var path = location.pathname.replace(/\/$/, "") || "/";
   document.querySelectorAll(".nav-links a, .mobile-menu a.mlink").forEach(function (a) {
-    var href = a.getAttribute("href") || "";
-    if (href === path || (path === "" && href === "index.html")) a.setAttribute("aria-current", "page");
+    var href = (a.getAttribute("href") || "").split("#")[0] || "/";
+    if (href === path) a.setAttribute("aria-current", "page");
   });
 
   /* ---------- Scroll reveals ---------- */
