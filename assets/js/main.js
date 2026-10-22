@@ -157,24 +157,55 @@
     });
   }
 
-  /* ---------- Hero: cursor-reactive depth + parallax ---------- */
+  /* ---------- Hero: 3D cursor animation + idle sway ---------- */
   var hero = document.querySelector("[data-hero]");
-  if (hero && finePointer && !reduceMotion) {
-    var heroMedia = hero.querySelector("[data-hero-media]");
-    var heroContent = hero.querySelector("[data-hero-content]");
-    hero.addEventListener("mousemove", function (e) {
-      var r = hero.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      if (heroMedia) heroMedia.style.transform =
-        "translate3d(" + x * 26 + "px," + y * 26 + "px,0) rotateY(" + x * 9 + "deg) rotateX(" + (-y * 9) + "deg) scale(1.03)";
-      if (heroContent) heroContent.style.transform =
-        "translate3d(" + x * -12 + "px," + y * -12 + "px,0)";
-    });
-    hero.addEventListener("mouseleave", function () {
-      if (heroMedia) heroMedia.style.transform = "";
-      if (heroContent) heroContent.style.transform = "";
-    });
+  var heroMedia = hero ? hero.querySelector("[data-hero-media]") : null;
+  var heroContent = hero ? hero.querySelector("[data-hero-content]") : null;
+  if (hero && heroMedia && !reduceMotion) {
+    var tRX = 0, tRY = 0, tTX = 0, tTY = 0, tS = 1;
+    var cRX = 0, cRY = 0, cTX = 0, cTY = 0, cS = 1;
+    var lastMove = -10000, hovering = false, heroInView = true;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        heroInView = entries[0].isIntersecting;
+      }, { threshold: 0.02 }).observe(hero);
+    }
+    if (finePointer) {
+      hero.addEventListener("mousemove", function (e) {
+        var r = hero.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        tRY = x * 32; tRX = -y * 26;
+        tTX = x * 30; tTY = y * 30; tS = 1.045;
+        hovering = true; lastMove = performance.now();
+        heroMedia.style.setProperty("--gx", ((x + 0.5) * 100) + "%");
+        heroMedia.style.setProperty("--gy", ((y + 0.5) * 100) + "%");
+        if (heroContent) heroContent.style.transform =
+          "translate3d(" + x * -14 + "px," + y * -14 + "px,0)";
+      });
+      hero.addEventListener("mouseleave", function () {
+        hovering = false;
+        if (heroContent) heroContent.style.transform = "";
+      });
+    }
+    (function heroLoop(now) {
+      requestAnimationFrame(heroLoop);
+      if (!heroInView) return;
+      if (!hovering || now - lastMove > 2600) {
+        var t = now * 0.001;
+        tRY = Math.sin(t * 0.7) * 9;
+        tRX = Math.cos(t * 0.55) * 7;
+        tTX = Math.sin(t * 0.5) * 10;
+        tTY = Math.cos(t * 0.62) * 10;
+        tS = 1;
+      }
+      var k = 0.065;
+      cRX += (tRX - cRX) * k; cRY += (tRY - cRY) * k;
+      cTX += (tTX - cTX) * k; cTY += (tTY - cTY) * k;
+      cS += (tS - cS) * k;
+      heroMedia.style.transform =
+        "translate3d(" + cTX.toFixed(2) + "px," + cTY.toFixed(2) + "px,0) rotateY(" + cRY.toFixed(2) + "deg) rotateX(" + cRX.toFixed(2) + "deg) scale(" + cS.toFixed(3) + ")";
+    })(performance.now());
     // gentle scroll parallax
     var ticking = false;
     window.addEventListener("scroll", function () {
