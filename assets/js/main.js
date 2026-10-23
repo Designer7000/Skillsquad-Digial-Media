@@ -147,8 +147,6 @@
         tRY = x * 32; tRX = -y * 26;
         tTX = x * 30; tTY = y * 30; tS = 1.045;
         hovering = true; lastMove = performance.now();
-        heroMedia.style.setProperty("--gx", ((x + 0.5) * 100) + "%");
-        heroMedia.style.setProperty("--gy", ((y + 0.5) * 100) + "%");
         if (heroContent) heroContent.style.transform =
           "translate3d(" + x * -14 + "px," + y * -14 + "px,0)";
       });

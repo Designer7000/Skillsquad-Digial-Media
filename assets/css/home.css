@@ -51,28 +51,6 @@
   0%, 100% { transform: translateY(0) rotate(-1.2deg); }
   50% { transform: translateY(-24px) rotate(1.2deg); }
 }
-.hero-shadow {
-  position: absolute; left: 50%; bottom: 4%;
-  width: 58%; height: 34px;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(253, 184, 21, 0.34), rgba(253, 184, 21, 0) 68%);
-  filter: blur(7px);
-  pointer-events: none;
-  animation: heroShadowPulse 6s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-@keyframes heroShadowPulse {
-  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.85; }
-  50% { transform: translateX(-50%) scaleX(0.78); opacity: 0.45; }
-}
-.hero-glare {
-  position: absolute; inset: -15%;
-  pointer-events: none; opacity: 0;
-  transition: opacity 500ms ease;
-  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 238, 196, 0.6), rgba(255, 255, 255, 0) 65%);
-  mix-blend-mode: screen;
-}
-.hero-media:hover .hero-glare { opacity: 0.55; }
 .hero-foot {
   display: flex; justify-content: space-between; align-items: center;
   padding-top: var(--sp-6); margin-top: var(--sp-8);
