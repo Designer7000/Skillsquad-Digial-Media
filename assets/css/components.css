@@ -473,29 +473,6 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 }
 @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
 
-/* ================= CUSTOM CURSOR (pointer devices only) ================= */
-.cursor-dot, .cursor-ring { display: none; }
-@media (hover: hover) and (pointer: fine) {
-  .cursor-dot, .cursor-ring {
-    display: block; position: fixed; top: 0; left: 0; z-index: 2001;
-    pointer-events: none; border-radius: 50%;
-  }
-  .cursor-dot { width: 6px; height: 6px; background: var(--accent); }
-  .cursor-ring {
-    width: 36px; height: 36px; border: 1px solid rgba(244,243,239,0.35);
-    display: grid; place-items: center;
-    transition: width var(--t-micro) var(--ease-out), height var(--t-micro) var(--ease-out),
-                background var(--t-micro), border-color var(--t-micro);
-  }
-  .cursor-ring .cursor-label {
-    font-family: var(--font-display); font-size: 0.62rem; font-weight: var(--weight-bold);
-    letter-spacing: 0.12em; color: #fff; opacity: 0; transition: opacity var(--t-micro);
-  }
-  .cursor-ring.is-hover { width: 56px; height: 56px; border-color: var(--accent); }
-  .cursor-ring.is-view { width: 88px; height: 88px; background: var(--accent); border-color: var(--accent); }
-  .cursor-ring.is-view .cursor-label { opacity: 1; }
-  .cursor-ring.is-down { transform-origin: center; }
-}
 
 /* ================= MISC ================= */
 .scroll-hint {

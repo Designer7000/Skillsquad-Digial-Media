@@ -108,37 +108,6 @@
     counters.forEach(function (el) { cio.observe(el); });
   }
 
-  /* ---------- Custom cursor (desktop pointers only) ---------- */
-  if (finePointer && !reduceMotion) {
-    var dot = document.createElement("div"); dot.className = "cursor-dot"; dot.setAttribute("aria-hidden", "true");
-    var ring = document.createElement("div"); ring.className = "cursor-ring"; ring.setAttribute("aria-hidden", "true");
-    ring.innerHTML = '<span class="cursor-label">VIEW</span>';
-    document.body.appendChild(dot); document.body.appendChild(ring);
-
-    var mx = -100, my = -100, rx = -100, ry = -100;
-    document.addEventListener("mousemove", function (e) {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = "translate(" + (mx - 3) + "px," + (my - 3) + "px)";
-    });
-    (function loop() {
-      rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
-      var half = ring.classList.contains("is-view") ? 44 : (ring.classList.contains("is-hover") ? 28 : 18);
-      ring.style.transform = "translate(" + (rx - half) + "px," + (ry - half) + "px)";
-      requestAnimationFrame(loop);
-    })();
-
-    document.querySelectorAll("a, button, .service-row, .ind-tag").forEach(function (el) {
-      el.addEventListener("mouseenter", function () { ring.classList.add("is-hover"); });
-      el.addEventListener("mouseleave", function () { ring.classList.remove("is-hover"); });
-    });
-    document.querySelectorAll("[data-cursor='view']").forEach(function (el) {
-      el.addEventListener("mouseenter", function () { ring.classList.add("is-view"); });
-      el.addEventListener("mouseleave", function () { ring.classList.remove("is-view"); });
-    });
-    document.addEventListener("mousedown", function () { ring.style.scale = "0.85"; });
-    document.addEventListener("mouseup", function () { ring.style.scale = "1"; });
-  }
-
   /* ---------- Magnetic buttons (desktop pointers only) ---------- */
   if (finePointer && !reduceMotion) {
     document.querySelectorAll("[data-magnetic]").forEach(function (el) {
