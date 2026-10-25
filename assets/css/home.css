@@ -213,6 +213,7 @@
 }
 .team-photo img {
   width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(100%);
 }
 .team-photo--empty span { color: var(--text-3); }
 .team-card h3 {
