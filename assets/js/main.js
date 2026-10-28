@@ -530,4 +530,29 @@
 
   layout();
   restart();
+
+  /* ---------- Custom cursor: yellow dot + white outline ring ---------- */
+  if (finePointer && !reduceMotion) {
+    var dot = document.querySelector('.cursor-dot');
+    var ring = document.querySelector('.cursor-ring');
+    if (dot && ring) {
+      document.documentElement.classList.add('has-custom-cursor');
+      var mx = -100, my = -100, rx = -100, ry = -100;
+      document.addEventListener('mousemove', function (e) {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+        dot.style.opacity = '1'; ring.style.opacity = '1';
+      });
+      document.documentElement.addEventListener('mouseleave', function () {
+        dot.style.opacity = '0'; ring.style.opacity = '0';
+      });
+      (function ringLoop() {
+        rx += (mx - rx) * 0.16;
+        ry += (my - ry) * 0.16;
+        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+        requestAnimationFrame(ringLoop);
+      })();
+    }
+  }
+
 })();

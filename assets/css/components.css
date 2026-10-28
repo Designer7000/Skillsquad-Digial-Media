@@ -498,3 +498,17 @@ body.menu-open .mobile-menu a.mlink:nth-child(6) { transition-delay: 370ms; }
 .breadcrumb { display: flex; gap: var(--sp-3); align-items: center; font-size: var(--fs-small); color: var(--text-3); }
 .breadcrumb a:hover { color: var(--text); }
 .breadcrumb .sep { color: var(--line-strong); }
+
+/* ================= CUSTOM CURSOR: yellow dot + white outline ring ================= */
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor, .has-custom-cursor * { cursor: none !important; }
+}
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+  border-radius: 50%; opacity: 0; transition: opacity 0.2s ease;
+}
+.cursor-dot { width: 8px; height: 8px; background: #fdb815; }
+.cursor-ring { width: 36px; height: 36px; border: 1.5px solid #ffffff; }
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
