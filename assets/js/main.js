@@ -455,7 +455,6 @@
         card.style.zIndex = String(10 - abs);
       }
       card.style.pointerEvents = 'auto';
-      card.style.cursor = offset === 0 ? 'grab' : 'pointer';
       dots[i].classList.toggle('active', i === current);
     });
   }
@@ -489,13 +488,11 @@
   var dragX = 0;
   var dragDX = 0;
   var stage = carousel.querySelector('.testi-stage');
-  stage.style.cursor = 'grab';
 
   carousel.addEventListener('mousedown', function (e) {
     dragging = true;
     dragX = e.clientX;
     dragDX = 0;
-    stage.style.cursor = 'grabbing';
     if (timer) clearInterval(timer);
     e.preventDefault();
   });
@@ -512,8 +509,7 @@
     if (!dragging) return;
     dragging = false;
     wasDrag = Math.abs(dragDX) > 10;
-    stage.style.cursor = 'grab';
-    stage.style.transition = '';
+      stage.style.transition = '';
     stage.style.transform = '';
     if (wasDrag && Math.abs(dragDX) > 60) {
       goTo(current + (dragDX < 0 ? 1 : -1));
