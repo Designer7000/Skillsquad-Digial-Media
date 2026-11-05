@@ -53,7 +53,7 @@ window.SKILLSQUAD = {
     { n: "08", title: "Print & 3D Signage", tags: ["Print Media", "Sign Boards", "Large Format"], desc: "From premium print collateral to dimensional 3D sign boards that dominate physical space.", img: "work-verde.jpg" },
   ],
 
-  /* ---------- Projects (REAL WORK — Skillsquad Digital Media official Behance, behance.net/skillsdigital) ---------- */
+  /* ---------- Projects (REAL WORK — Skillsquad official Behance behance.net/skillsdigital, plus UI/UX projects from the personal Behance behance.net/tayyabinst7a80) ---------- */
   projects: [
     { slug: "arcadia-beans", title: "Arcadia Beans Coffee Studio", category: "Brand Identity",
       year: "Behance", tags: ["Identity", "Branding"],
@@ -103,6 +103,18 @@ window.SKILLSQUAD = {
       year: "Behance", tags: ["Social", "Creatives"],
       blurb: "Social media design for a personnel library.",
       img: "work-personnel-library.jpg", url: "https://www.behance.net/gallery/253201635/Personnel-Library-Social-Media-Design", },
+    { slug: "metabuddy", title: "MetaBuddy 2.0", category: "UI/UX Design",
+      year: "Behance", tags: ["UI", "Landing Page"],
+      blurb: "Web landing page UI design — clean, conversion-focused interface.",
+      img: "work-metabuddy.jpg", url: "https://www.behance.net/gallery/192811193/MetaBuddy-20-_-Web-Landing-Page-_-UI-Design", },
+    { slug: "email-design", title: "Email Design", category: "UI/UX Design",
+      year: "Behance", tags: ["Email", "Template"],
+      blurb: "Email template design — polished layouts built for inboxes.",
+      img: "work-email-design.jpg", url: "https://www.behance.net/gallery/232833885/Email-Design", },
+    { slug: "herbcare", title: "HerbCare App", category: "UI/UX Design",
+      year: "Behance", tags: ["UI/UX", "App"],
+      blurb: "Herbal cosmetics app case study — UI/UX from research to prototype.",
+      img: "work-herbcare.jpg", url: "https://www.behance.net/gallery/217371103/HerbCare-Herbal-Cosmetics-App-Case-Study-(UIUX)", },
   ],
 
   /* ---------- Process ---------- */
