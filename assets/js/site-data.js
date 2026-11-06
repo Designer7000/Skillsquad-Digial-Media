@@ -83,7 +83,7 @@ window.SKILLSQUAD = {
       year: "Behance", tags: ["Identity", "Branding"],
       blurb: "Gym brand identity — bold marks for a fitness brand.",
       img: "work-gym-brand.jpg", url: "https://www.behance.net/gallery/215405529/Gym-Brand-Identity", },
-    { slug: "windsor-logo", title: "Windsor Bedding Components", category: "Brand Identity",
+    { slug: "windsor-logo", title: "Windsor Bedding Components", category: "Logo Design",
       year: "Behance", tags: ["Logo", "Branding"],
       blurb: "Logo design for a bedding components company.",
       img: "work-windsor-logo.jpg", url: "https://www.behance.net/gallery/177171203/Windsor-Bedding-Components-Logo", },
