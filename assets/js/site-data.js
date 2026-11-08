@@ -123,10 +123,10 @@ window.SKILLSQUAD = {
       year: "Behance", tags: ["UI", "Website"],
       blurb: "Driver website UI design — landing page for a driver's platform, travel help and bookings.",
       img: "work-travel-help-squad.jpg", url: "https://www.behance.net/gallery/180422477/Travel-Help-Squad-UIUX-Concept", },
-    { slug: "herbcare", title: "HerbCare App", category: "UI/UX Design",
-      year: "Behance", tags: ["UI/UX", "App"],
-      blurb: "Herbal cosmetics app case study — UI/UX from research to prototype.",
-      img: "work-herbcare.jpg", url: "https://www.behance.net/gallery/217371103/HerbCare-Herbal-Cosmetics-App-Case-Study-(UIUX)", },
+    { slug: "omni-chit-chat", title: "Omni Chit Chat", category: "UI/UX Design",
+      year: "Behance", tags: ["UI/UX", "Dashboard"],
+      blurb: "Social media management dashboard UI/UX — monitor performance, manage content and collaborate in one place.",
+      img: "work-omni-chit-chat.jpg", url: "https://www.behance.net/gallery/252787039/Omni-Chit-Chat-UIUX-Case-Study", },
   ],
 
   /* ---------- Process ---------- */
