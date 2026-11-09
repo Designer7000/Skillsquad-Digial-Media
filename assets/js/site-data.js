@@ -131,6 +131,10 @@ window.SKILLSQUAD = {
       year: "Behance", tags: ["Mobile App", "UI/UX"],
       blurb: "Pizza-ordering mobile app UI/UX — browse pizzas, cart and checkout in one place.",
       img: "work-marios-pizzeria.jpg", url: "https://www.behance.net/gallery/179402291/Marios-Pizzeria", },
+    { slug: "currency-gram", title: "Currency Gram", category: "UI/UX Design",
+      year: "Behance", tags: ["Mobile App", "UI/UX"],
+      blurb: "Multi-currency money app UI/UX — GBP account, send and receive money, transactions and offers in one place.",
+      img: "work-currency-gram.jpg", url: "https://www.behance.net/gallery/253199779/Currency-Gram-UIUX-Mobile-Application", },
   ],
 
   /* ---------- Process ---------- */
