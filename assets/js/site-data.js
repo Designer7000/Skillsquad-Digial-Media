@@ -127,6 +127,10 @@ window.SKILLSQUAD = {
       year: "Behance", tags: ["UI/UX", "Dashboard"],
       blurb: "Social media management dashboard UI/UX — monitor performance, manage content and collaborate in one place.",
       img: "work-omni-chit-chat.jpg", url: "https://www.behance.net/gallery/252787039/Omni-Chit-Chat-UIUX-Case-Study", },
+    { slug: "marios-pizzeria", title: "Mario's Pizzeria", category: "UI/UX Design",
+      year: "Behance", tags: ["Mobile App", "UI/UX"],
+      blurb: "Pizza-ordering mobile app UI/UX — browse pizzas, cart and checkout in one place.",
+      img: "work-marios-pizzeria.jpg", url: "https://www.behance.net/gallery/179402291/Marios-Pizzeria", },
   ],
 
   /* ---------- Process ---------- */
