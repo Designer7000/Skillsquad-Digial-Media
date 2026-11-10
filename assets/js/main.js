@@ -535,8 +535,13 @@
 
 /* ---------- Custom cursor: yellow dot + white outline ring ---------- */
 /* Standalone: must NOT live inside the testimonial carousel IIFE, which
-   returns early on pages without a carousel (about/services/work/contact). */
+   returns early on pages without a carousel (about/services/work/contact).
+   NOTE: finePointer/reduceMotion are scoped inside the main IIFE above,
+   so this IIFE defines its own copies — referencing the outer ones throws
+   ReferenceError and kills the cursor everywhere. */
 (function () {
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (finePointer && !reduceMotion) {
     var dot = document.querySelector('.cursor-dot');
     var ring = document.querySelector('.cursor-ring');
