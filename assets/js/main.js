@@ -531,7 +531,12 @@
   layout();
   restart();
 
-  /* ---------- Custom cursor: yellow dot + white outline ring ---------- */
+})();
+
+/* ---------- Custom cursor: yellow dot + white outline ring ---------- */
+/* Standalone: must NOT live inside the testimonial carousel IIFE, which
+   returns early on pages without a carousel (about/services/work/contact). */
+(function () {
   if (finePointer && !reduceMotion) {
     var dot = document.querySelector('.cursor-dot');
     var ring = document.querySelector('.cursor-ring');
@@ -554,5 +559,4 @@
       })();
     }
   }
-
 })();
