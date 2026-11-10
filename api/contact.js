@@ -6,14 +6,12 @@
    Requires env var: RESEND_API_KEY
    (Vercel Dashboard → Project → Settings → Environment Variables)
 
-   NOTE: Resend's onboarding@resend.dev sender can only deliver
-   to the Resend account owner's email until a domain is verified
-   at resend.com/domains. After verifying a domain, change FROM
-   and TO below to the business address.
+   NOTE: Domain skillsquaddigitalmedia.com verified in Resend
+   2026-11-10 (DKIM + SPF). FROM/TO are the business addresses.
    ============================================================ */
 
-const FROM = "onboarding@resend.dev";
-const TO = "tayyab.insta@gmail.com"; // Resend account owner (verified sender target)
+const FROM = "hello@skillsquaddigitalmedia.com";
+const TO = "skillsquaddigitalmedia@gmail.com"; // business inbox (domain verified in Resend 2026-11-10)
 
 function esc(s) {
   return String(s == null ? "" : s).replace(/[<>&"]/g, function (c) {
